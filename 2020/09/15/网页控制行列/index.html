@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="lgx" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        网页控制行列｜lgx
+        
+    </title>
+
+    <link rel="canonical" href="https://lgx06.github.io/2020/09/15/网页控制行列/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2093425964,1763924149&amp;fm=26&amp;gp=0.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    lgx
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>网页控制行列</h1>
+                    
+                    <span class="meta">
+                         作者 lgx
+                        <span>
+                          日期 2020-09-15
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            网页控制行列
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="本章任务"><a href="#本章任务" class="headerlink" title="本章任务"></a>本章任务</h2><ul>
+<li>用网页控制矩阵上的行和列</li>
+</ul>
+<h3 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span>    selected_device; <span class="comment">//选择设备</span></span><br><span class="line">        <span class="keyword">var</span>    connected_server; <span class="comment">//连接设备</span></span><br><span class="line">        <span class="keyword">var</span>    connected=<span class="literal">false</span>;<span class="comment">//连接状态</span></span><br><span class="line">        <span class="keyword">var</span>    services_discovered=<span class="literal">false</span>;<span class="comment">//发现设备状态</span></span><br><span class="line">        <span class="comment">// 添加服务和特性状态变量 </span></span><br><span class="line">        <span class="keyword">var</span> has_accelerometer_service = <span class="literal">false</span>; <span class="comment">//加速度服务状态</span></span><br><span class="line">        <span class="keyword">var</span> has_accelerometer_data = <span class="literal">false</span>; <span class="comment">//加速度特性状态</span></span><br><span class="line">        <span class="keyword">var</span> has_led_service = <span class="literal">false</span>;<span class="comment">//led服务状态</span></span><br><span class="line">        <span class="keyword">var</span> has_led_matrix_state = <span class="literal">false</span>; <span class="comment">//led控制特性状态</span></span><br><span class="line">        <span class="keyword">var</span> has_device_information_service = <span class="literal">false</span>; <span class="comment">//设备信息服务状态</span></span><br><span class="line">        <span class="keyword">var</span> has_model_name_string = <span class="literal">false</span>; <span class="comment">//设备信息特性状态</span></span><br><span class="line">        <span class="keyword">var</span> has_temperature_service =<span class="literal">false</span>;    <span class="comment">//温度服务状态</span></span><br><span class="line">        <span class="keyword">var</span> has_tem_temperature = <span class="literal">false</span>;  <span class="comment">//温度特性状态</span></span><br><span class="line">         <span class="comment">// 服务 UUIDs </span></span><br><span class="line">       ACCELEROMETER_SERVICE = <span class="string">&#x27;e95d0753-251d-470a-a062-fa1922dfa9a8&#x27;</span>; </span><br><span class="line">       LED_SERVICE = <span class="string">&#x27;e95dd91d-251d-470a-a062-fa1922dfa9a8&#x27;</span>; </span><br><span class="line">       DEVICE_INFORMATION_SERVICE = <span class="string">&#x27;0000180a-0000-1000-8000-00805f9b34fb&#x27;</span>;</span><br><span class="line">       TEMPERATURE_SERVICE = <span class="string">&#x27;e95d6100-251d-470a-a062-fa1922dfa9a8&#x27;</span>; </span><br><span class="line">       <span class="comment">// 特性 UUIDs </span></span><br><span class="line">       ACCELEROMETER_DATA = <span class="string">&#x27;e95dca4b-251d-470a-a062-fa1922dfa9a8&#x27;</span>; </span><br><span class="line">       LED_MATRIX_STATE  = <span class="string">&#x27;e95d7b77-251d-470a-a062-fa1922dfa9a8&#x27;</span>; </span><br><span class="line">       MODEL_NUMBER_STRING = <span class="string">&#x27;00002a24-0000-1000-8000-00805f9b34fb&#x27;</span>;</span><br><span class="line">       TEM_TEMPERATURE = <span class="string">&#x27;e95d1b25-251d-470a-a062-fa1922dfa9a8&#x27;</span>;  </span><br><span class="line">       <span class="comment">// 添加特性变量 </span></span><br><span class="line">       <span class="keyword">var</span> led_matrix_state; </span><br><span class="line">        <span class="keyword">var</span> model_number_string;</span><br><span class="line">        <span class="keyword">var</span> accelerometer_data;</span><br><span class="line">        <span class="keyword">var</span> tem_temperature;    </span><br><span class="line">          <span class="comment">//添加服务，特性相关参数</span></span><br><span class="line">        <span class="keyword">var</span> service_count;</span><br><span class="line">         <span class="keyword">var</span> services_discovered;</span><br><span class="line">         <span class="keyword">var</span> characteristics_discovered;  </span><br><span class="line">         <span class="keyword">var</span> characteristic_count ;               </span><br><span class="line">         <span class="function"><span class="keyword">function</span> <span class="title">discoverOrdisconnectDevices</span>(<span class="params"></span>)// 断开连接</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;discoverOrdisconnectDevices&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!connected)</span><br><span class="line">            discoverDevices();</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                selected_device.gatt.disconnect();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">onDisconnected</span>(<span class="params"></span>)//连接</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;onDisconnected&quot;</span>);</span><br><span class="line">       resetUI();</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//function input.temperature(): number;</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">discoverDevices</span>(<span class="params"></span>)// 搜索设备函数</span></span><br><span class="line"><span class="function">   </span>&#123; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;discoverDevices&quot;</span>);</span><br><span class="line">       <span class="keyword">var</span> options = &#123;<span class="attr">acceptAllDevices</span>:<span class="literal">true</span>,</span><br><span class="line">           optionalServices: [DEVICE_INFORMATION_SERVICE, ACCELEROMETER_SERVICE, LED_SERVICE,TEMPERATURE_SERVICE]  <span class="comment">//在第5节课上添加</span></span><br><span class="line">       &#125;        <span class="comment">//发现所有周边蓝牙设备</span></span><br><span class="line">      </span><br><span class="line">       navigator.bluetooth.requestDevice(options)</span><br><span class="line">       .then(<span class="function"><span class="params">device</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;&gt; Name:&#x27;</span> + device.name);</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;&gt; Id:&#x27;</span> + device.id);</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;&gt; Connected:&#x27;</span> + device.gatt.connected);</span><br><span class="line">           selected_device = device;</span><br><span class="line">           <span class="built_in">console</span>.log(selected_device);</span><br><span class="line">           connect();</span><br><span class="line">           &#125;)</span><br><span class="line">       .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">           alert(<span class="string">&#x27;ERROR&#x27;</span> +error);</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&#x27;ERROR&#x27;</span> +error);</span><br><span class="line">           &#125;);       </span><br><span class="line">   &#125;       </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params"></span>)	//连接函数</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;connecting&quot;</span>);</span><br><span class="line">       selected_device.gatt.connect()</span><br><span class="line">       .then(</span><br><span class="line">           <span class="function"><span class="keyword">function</span> (<span class="params">server</span>)</span></span><br><span class="line"><span class="function">           </span>&#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">&quot;Connected to&quot;</span> + server.device.id);</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">&quot;Connected &quot;</span> + server.connected);</span><br><span class="line">               selected_device.addEventListener(<span class="string">&#x27;gattserverdisconnected&#x27;</span>,onDisconnected);</span><br><span class="line">               connected_server =server;</span><br><span class="line">               discoverSvcsAndChars(); <span class="comment">//在第5课基础上添加的函数</span></span><br><span class="line">               setConnectedStatus(<span class="literal">true</span>);</span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="function"><span class="keyword">function</span> (<span class="params">error</span>)</span></span><br><span class="line"><span class="function">           </span>&#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">&quot;ERROR:could not connct-&quot;</span> + error);</span><br><span class="line">              alert(<span class="string">&quot;ERROR:could not connct-&quot;</span> + error);</span><br><span class="line">              setConnectedStatus(<span class="literal">false</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">setConnectedStatus</span>(<span class="params">status</span>)//设置连接状态</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       connected=status;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">&#x27;status_connected&#x27;</span>).innerHTML = status;</span><br><span class="line">       <span class="keyword">if</span>(status==<span class="literal">true</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn_scan&#x27;</span>).innerHTML = <span class="string">&quot;Disconnect&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn_scan&#x27;</span>).innerHTML = <span class="string">&quot;Discover Devices&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">setDiscoveryStatus</span>(<span class="params">status</span>)//设置发现状态</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       services_discovered=status;</span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">&#x27;status_discovered&#x27;</span>).innerHTML=status;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">resetUI</span>(<span class="params"></span>)	//重置页面</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       setConnectedStatus(<span class="literal">false</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">discoverSvcsAndChars</span>(<span class="params"></span>)    //发现服务和特性</span></span><br><span class="line"><span class="function">   </span>&#123;  </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;discoverSvcsAndChars server=&quot;</span> + connected_server); </span><br><span class="line">       connected_server.getPrimaryServices()</span><br><span class="line">       .then(<span class="function"><span class="params">services</span> =&gt;</span> </span><br><span class="line">       &#123;    </span><br><span class="line">               has_accelerometer_service = <span class="literal">false</span>;    </span><br><span class="line">               has_led_service = <span class="literal">false</span>;    </span><br><span class="line">               has_device_information_service = <span class="literal">false</span>; </span><br><span class="line">               has_temperature_service= <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">               services_discovered = <span class="number">0</span>;    </span><br><span class="line">               service_count = services.length;    </span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">&quot;Got &quot;</span> + service_count + <span class="string">&quot; services&quot;</span>); </span><br><span class="line">   </span><br><span class="line">               services.forEach(<span class="function"><span class="params">service</span> =&gt;</span> </span><br><span class="line">               &#123;     </span><br><span class="line">                   <span class="keyword">if</span> (service.uuid == ACCELEROMETER_SERVICE)</span><br><span class="line">                   &#123;      </span><br><span class="line">                       has_accelerometer_service = <span class="literal">true</span>;    </span><br><span class="line">                   &#125;   </span><br><span class="line">                   <span class="keyword">if</span> (service.uuid == LED_SERVICE) </span><br><span class="line">                   &#123;      </span><br><span class="line">                       has_led_service = <span class="literal">true</span>;     </span><br><span class="line">                   &#125;     </span><br><span class="line">                  <span class="keyword">if</span> (service.uuid == DEVICE_INFORMATION_SERVICE) </span><br><span class="line">                   &#123;      </span><br><span class="line">                       has_device_information_service = <span class="literal">true</span>;     </span><br><span class="line">                   &#125; </span><br><span class="line">                   <span class="keyword">if</span> (service.uuid == TEMPERATURE_SERVICE) <span class="comment">//温度</span></span><br><span class="line">                   &#123;      </span><br><span class="line">                       has_temperature_service = <span class="literal">true</span>;     </span><br><span class="line">                   &#125;        </span><br><span class="line">                   <span class="built_in">console</span>.log(<span class="string">&#x27;Getting Characteristics for service &#x27;</span> + service.uuid);     </span><br><span class="line">                   service.getCharacteristics()</span><br><span class="line">                   .then(<span class="function"><span class="params">characteristics</span> =&gt;</span> </span><br><span class="line">                   &#123;      </span><br><span class="line">                       <span class="built_in">console</span>.log(<span class="string">&#x27;&gt; Service: &#x27;</span> + service.uuid);      </span><br><span class="line">                       services_discovered++;     </span><br><span class="line">                       characteristics_discovered = <span class="number">0</span>;      </span><br><span class="line">                       characteristic_count = characteristics.length;      </span><br><span class="line">                       characteristics.forEach(<span class="function"><span class="params">characteristic</span> =&gt;</span> </span><br><span class="line">                       &#123;       </span><br><span class="line">                           characteristics_discovered++;       </span><br><span class="line">                           <span class="built_in">console</span>.log(<span class="string">&#x27;&gt;&gt; Characteristic: &#x27;</span> + characteristic.uuid);       </span><br><span class="line">                           <span class="keyword">if</span> (characteristic.uuid == ACCELEROMETER_DATA)</span><br><span class="line">                           &#123;        </span><br><span class="line">                               accelerometer_data = characteristic;        </span><br><span class="line">                               has_accelerometer_data = <span class="literal">true</span>;       </span><br><span class="line">                           &#125;      </span><br><span class="line">                           <span class="keyword">if</span> (characteristic.uuid == LED_MATRIX_STATE) </span><br><span class="line">                           &#123;        </span><br><span class="line">                               led_matrix_state = characteristic;        </span><br><span class="line">                               has_led_matrix_state = <span class="literal">true</span>;       </span><br><span class="line">                           &#125;       </span><br><span class="line">                           <span class="keyword">if</span> (characteristic.uuid == MODEL_NUMBER_STRING) </span><br><span class="line">                           &#123;        </span><br><span class="line">                               model_number_string = characteristic;        </span><br><span class="line">                               has_model_name_string = <span class="literal">true</span>;       </span><br><span class="line">                           &#125;</span><br><span class="line">                           <span class="keyword">if</span>(characteristic.uuid == TEM_TEMPERATURE)  <span class="comment">//温度</span></span><br><span class="line">                           &#123;</span><br><span class="line">                               tem_temperature = characteristic; </span><br><span class="line">                               has_tem_temperature = <span class="literal">true</span>;</span><br><span class="line">                           &#125;     </span><br><span class="line">                           <span class="keyword">if</span> (services_discovered == service_count &amp;&amp; characteristics_discovered == characteristic_count) </span><br><span class="line">                           &#123;        </span><br><span class="line">                               <span class="built_in">console</span>.log(<span class="string">&quot;FINISHED DISCOVERY&quot;</span>); </span><br><span class="line">                               setDiscoveryStatus(<span class="literal">true</span>);       </span><br><span class="line">                               <span class="comment">//setDiscoveryStatus(true);                  </span></span><br><span class="line">                           &#125;    </span><br><span class="line">                       &#125;);     </span><br><span class="line">                   &#125;);    </span><br><span class="line">               &#125;);  </span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;  </span><br><span class="line"><span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">randomLEDs</span>(<span class="params">ct</span>)   //控制<span class="title">led</span></span></span><br><span class="line"><span class="function">   </span>&#123;  </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;randomLEDs&quot;</span>);   </span><br><span class="line">       <span class="comment">// state validation   </span></span><br><span class="line">       <span class="keyword">if</span> (!connected) </span><br><span class="line">       &#123;     </span><br><span class="line">           alert(<span class="string">&quot;Error: Discover and connect to a device before using this function&quot;</span>);     </span><br><span class="line">           <span class="keyword">return</span>;   </span><br><span class="line">       &#125;   </span><br><span class="line">       <span class="keyword">if</span> (!services_discovered) </span><br><span class="line">       &#123;     </span><br><span class="line">           alert(<span class="string">&quot;Error: Service discovery has not yet completed&quot;</span>);     </span><br><span class="line">           <span class="keyword">return</span>;  </span><br><span class="line">       &#125;   </span><br><span class="line">       <span class="keyword">if</span> (!has_led_service) </span><br><span class="line">       &#123;     </span><br><span class="line">           alert(<span class="string">&quot;Error: The connected device does not contain the LED service&quot;</span>);     </span><br><span class="line">           <span class="keyword">return</span>;  </span><br><span class="line">       &#125;   </span><br><span class="line">       <span class="keyword">if</span> (!has_led_matrix_state) </span><br><span class="line">       &#123;      </span><br><span class="line">           alert(<span class="string">&quot;Error: The connected device does not contain the LED matrix state characteristic&quot;</span>);      </span><br><span class="line">           <span class="keyword">return</span>;   </span><br><span class="line">       &#125;   </span><br><span class="line">	<span class="keyword">var</span> led_array=[];</span><br><span class="line">	<span class="keyword">if</span>(ct==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		 led_array[<span class="number">0</span>] =	<span class="number">1</span>&lt;&lt;i;</span><br><span class="line">		 led_array[<span class="number">1</span>] = <span class="number">1</span>&lt;&lt;i;   </span><br><span class="line">		 led_array[<span class="number">2</span>] = <span class="number">1</span>&lt;&lt;i;   </span><br><span class="line">		 led_array[<span class="number">3</span>] = <span class="number">1</span>&lt;&lt;i;   </span><br><span class="line">		 led_array[<span class="number">4</span>] = <span class="number">1</span>&lt;&lt;i;</span><br><span class="line">		 i++;</span><br><span class="line">		 <span class="keyword">if</span>(i==<span class="number">5</span>)i=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(ct==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		led_array[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		led_array[<span class="number">1</span>] = <span class="number">0</span>;   </span><br><span class="line">		led_array[<span class="number">2</span>] = <span class="number">0</span>;   </span><br><span class="line">		led_array[<span class="number">3</span>] = <span class="number">0</span>;   </span><br><span class="line">		led_array[<span class="number">4</span>] = <span class="number">0</span>;</span><br><span class="line">		led_array[j] = <span class="number">31</span>;</span><br><span class="line">		j++;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">5</span>)j=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">     <span class="comment">// Math.random():0~1  Math.floor(x):返回小于等于x的最大整数</span></span><br><span class="line">    <span class="comment">/*led_array[0] =10;  </span></span><br><span class="line"><span class="comment">    led_array[1] = 31;   </span></span><br><span class="line"><span class="comment">    led_array[2] = 31;   </span></span><br><span class="line"><span class="comment">    led_array[3] = 14;   </span></span><br><span class="line"><span class="comment">    led_array[4] = 4;*/</span></span><br><span class="line">    <span class="comment">/*led_array[0] = 31;  </span></span><br><span class="line"><span class="comment">    led_array[1] = 17;   </span></span><br><span class="line"><span class="comment">    led_array[2] = 17;   </span></span><br><span class="line"><span class="comment">    led_array[3] = 17;   </span></span><br><span class="line"><span class="comment">    led_array[4] = 31; */</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">var</span> led_matrix_data = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(led_array); </span><br><span class="line"></span><br><span class="line">    led_matrix_state.writeValue(led_matrix_data.buffer)</span><br><span class="line">    .then(<span class="function"><span class="params">_</span> =&gt;</span> &#123;   </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;LED matrix state changed&#x27;</span>);  </span><br><span class="line">        &#125;)  </span><br><span class="line">    .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;   </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Error: &#x27;</span> + error);   </span><br><span class="line">        alert(<span class="string">&#x27;Error: &#x27;</span> + error);   <span class="keyword">return</span>;  </span><br><span class="line">        &#125;); </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readModelNumber</span>(<span class="params"></span>)  // 蓝牙信息服务</span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;readModelNumber&quot;</span>);   </span><br><span class="line">    <span class="comment">// state validation   </span></span><br><span class="line">    <span class="keyword">if</span> (!connected) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: Discover and connect to a device before using this function&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span> (!services_discovered) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: Service discovery has not yet completed&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">if</span> (!has_device_information_service) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: The connected device does not contain the device information service&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span> (!has_model_name_string) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: The connected device does not contain the model name string characteristic&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    model_number_string.readValue()</span><br><span class="line">    .then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;   </span><br><span class="line">        data = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(value.buffer);   </span><br><span class="line">        model_number_string = <span class="keyword">new</span> TextDecoder(<span class="string">&quot;utf-8&quot;</span>).decode(data);  </span><br><span class="line">        <span class="built_in">console</span>.log(model_number_string);   </span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">&quot;model_number&quot;</span>).innerHTML = model_number_string;  </span><br><span class="line">        &#125;)  </span><br><span class="line">    .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Error: &#x27;</span> + error);   </span><br><span class="line">        alert(<span class="string">&#x27;Error: &#x27;</span> + error);   </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">        &#125;); </span><br><span class="line">    &#125;</span><br><span class="line">		</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">accelerometer</span>(<span class="params"></span>)   //加速度传感器</span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;accelerometer&quot;</span>);   </span><br><span class="line">    <span class="comment">// state validation   </span></span><br><span class="line">    <span class="keyword">if</span> (!connected) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: Discover and connect to a device before using this function&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span> (!services_discovered) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: Service discovery has not yet completed&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span> (!has_accelerometer_service) </span><br><span class="line">    &#123;     </span><br><span class="line">        alert(<span class="string">&quot;Error: The connected device does not contain the accelerometer service&quot;</span>);     </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span> (!has_accelerometer_data) </span><br><span class="line">    &#123;      </span><br><span class="line">        alert(<span class="string">&quot;Error: The connected device does not contain the accelerometer_data characteristic&quot;</span>);      </span><br><span class="line">        <span class="keyword">return</span>;   </span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    accelerometer_data.readValue()</span><br><span class="line">   .then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">     buffer = value.buffer;</span><br><span class="line">     dataview = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer);</span><br><span class="line">     X = dataview.getUint16(<span class="number">0</span>, <span class="literal">true</span>);</span><br><span class="line">     Y = dataview.getUint16(<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">     Z = dataview.getUint16(<span class="number">4</span>, <span class="literal">true</span>);</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&quot;X=&quot;</span> + X + <span class="string">&quot;, Y=&quot;</span> + Y + <span class="string">&quot;, Z+&quot;</span> + Z);</span><br><span class="line">     <span class="built_in">document</span>.getElementById(<span class="string">&quot;ac_data&quot;</span>).innerHTML = <span class="string">&quot;X=&quot;</span> + X + <span class="string">&quot;, Y=&quot;</span> + Y + <span class="string">&quot;,Z=&quot;</span> + Z;</span><br><span class="line">       &#125;)  </span><br><span class="line">   .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;  </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;Error: &#x27;</span> + error);   </span><br><span class="line">       alert(<span class="string">&#x27;Error: &#x27;</span> + error);   </span><br><span class="line">       <span class="keyword">return</span>;  </span><br><span class="line">       &#125;);</span><br><span class="line">	 &#125;  </span><br><span class="line">			 </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;  Status</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line">        &lt;table border=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;     <span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Connected<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span>   &lt;/td&gt;</span><br><span class="line">                &lt;td&gt;     <span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Service Discovery Completed<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span>   &lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td id=<span class="string">&quot;status_connected&quot;</span>&gt; <span class="literal">false</span> &lt;/td&gt;</span><br><span class="line">                &lt;td id=<span class="string">&quot;status_discovered&quot;</span>&gt; <span class="literal">false</span> &lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">    &lt;h2&gt;</span><br><span class="line">        Device Discovery or Disconnect</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line">    &lt;button id = <span class="string">&quot;btn_scan&quot;</span> onclick=<span class="string">&quot;discoverOrdisconnectDevices()&quot;</span>&gt;Start scan&lt;/button&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;h2&gt;Reading and Writing&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;Write Characteristic - Randomise Lights&lt;/h3&gt;  </span><br><span class="line">    &lt;button id=<span class="string">&quot;btn_write&quot;</span> onclick=<span class="string">&quot;randomLEDs(0)&quot;</span>&gt;控制led行&lt;/button&gt;</span><br><span class="line">	&lt;button id=<span class="string">&quot;btu_write&quot;</span> onclick=<span class="string">&quot;randomLEDs(1)&quot;</span>&gt;控制led列&lt;/button&gt;</span><br><span class="line">    &lt;h3&gt;Read Characteristic - Model number&lt;/h3&gt;  </span><br><span class="line">    &lt;button id=<span class="string">&quot;btn_read&quot;</span> onclick=<span class="string">&quot;readModelNumber()&quot;</span>&gt;Read Model number&lt;/button&gt; </span><br><span class="line">    &lt;div id=<span class="string">&quot;model_number&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">	&lt;h3&gt;accelerometer_data&lt;/h3&gt;</span><br><span class="line">	&lt;button id=<span class="string">&quot;btn_readAC&quot;</span> onclick=<span class="string">&quot;accelerometer()&quot;</span>&gt;Read accelerometer_data&lt;/button&gt; </span><br><span class="line">	&lt;div id=<span class="string">&quot;ac_data&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>执行代码，浏览器会显示以下效果：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/sunflower-air/clouding/images/20200623134352.png"><img src="https://cdn.jsdelivr.net/gh/sunflower-air/clouding/images/20200623134352.png" alt="img"></a></p>
+<p>点击控制行和列，板子会相应出现不同的显示。</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/09/15/网页如何显示连接蓝牙设备/" data-toggle="tooltip" data-placement="top"
+                           title="网页如何显示连接蓝牙设备">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/09/15/读写特性/" data-toggle="tooltip" data-placement="top"
+                           title="读写特性">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E4%BB%BB%E5%8A%A1"><span class="toc-text">本章任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="toc-text">相关代码</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/lgx06">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; lgx 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://lgx06.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
